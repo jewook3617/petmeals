@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title></title>
+</head>
+<body>
+<div th:text="${error}"></div>
+<script type="text/javascript">
+alert('로그인 실패')
+// 403에러메세지가 발생했을 경우 이전페이지로이동한다. 
+history.back(-1);
+
+</script>
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -111,10 +112,9 @@
   .bt1{
     text-align:center;
     height:100%;
-    width:300px;
+    width:350px;
     margin: 0 auto;
-    margin-top:250px;
-    margin-bottom: 50px;
+    margin-top:100px;
   }
   .bt1:before{
     content:'';
@@ -163,7 +163,7 @@
    height:30px;
    display: table-cell;
    border-right: 1px dashed #c6c6c6;
-   padding: 10px 5px;
+   padding: 3px 5px;
   }
   form{
    display:table;
@@ -231,7 +231,7 @@
   }
   #grid3{
     display: grid;
-    grid-template-rows: 350px 100px 300px;
+    grid-template-rows: 200px 100px 200px;
   }
   .choicedog{
     text-align:center;
@@ -242,19 +242,22 @@
   #customers {
   border-collapse: collapse;
   width: 80%;
-  margin-left:50px;
-  margin-top:25px;
+  margin: 0 auto;
   }
 
   #customers td {
     border: 1px solid white;
     padding: 8px;
-    font-weight: bold;
+    font-weight: 100;
+    font-size:12px;
+    text-align:center;
   }
   #customers th{
     border: 1px solid white;
     padding: 8px;
     font-weight: 100;
+    font-size: 14px;
+    text-align:center;
   }
 
   #customers tr:nth-child(even){background-color: #fff;}
@@ -264,24 +267,18 @@
   #customers th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
-    background-color: #dcdcdc;
+    background-color: #aaaaaa;
     color: black;
   }
   .paidname{
     margin-top:168px;
-    font-size: 20px;
-    margin-left:50px;
+    font-size: 60px;
+    text-align: center;
   }
-  .accountnum{
-    margin-left:50px;
-  }
-  .accountnum h1{
-    color:orange;
-    font-size:20px;
-  }
-  .accountnum p{
-    font-size:17px;
+  .paidnamedetail{
+    margin-bottom:70px;
+    color:#aaaaaa;
+    text-align: center;
   }
       </style>
   </head>
@@ -289,111 +286,64 @@
 
     <body style="background-color:#fff;">
       <div id="navbar">
-    <img src="pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;">
-    <a href="#default" id="logo">Pet Meals</a>
+    <img src="/pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;">
+    <a href="/" id="logo">Pet Meals</a>
     <div id="navbar-right">
-      <a class="active" href="#home">Meals</a>
-      <a href="#contact">help</a>
-      <a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto; margin-right:20px;">My Account</a>
+      <a th:href="@{/login}" sec:authorize="isAnonymous()" style="width:auto;">Login</a>
+    <a th:href="@{/logout}" sec:authorize="isAuthenticated()" style="width:auto;" th:text="Logout"></a>
+    <a th:href="@{/myaccount}" sec:authorize="isAuthenticated()">My Account</a>
     </div>
     </div>
 
 
-<div id="grid">
-<div id="grid2">
-  <div>
-    <div class="whole">
-    <form>
-    <h1>Buyer Info</h1>
-    <p><label>Name</label><span><input type="text"></span></p>
-    <p><label>Cell Phone Num</label> <span>
-      <select>
-    <option>010</option>
-    <option>011</option>
-    <option>019</option>
-    </select>
-    <input type="text">-<input type="text"></span></p>
-    <p><label>E-mail</label><span><input type="text">@
-    <select>
-    <option>gmail.com</option>
-    <option>naver.com</option>
-    <option>daum.net</option>
-    <option>hanmail.net</option>
-    <option>nate.com</option>
-    </select></span></p>
-    <p><label>Order Inquiry Password</label><span><input type="text"></span></p>
-    <p><label>Order Inquiry Password Confirm</label><span><input type="text"></span></p>
-    <p style="border-bottom: 2px solid #828282;"><label>Address</label><span><input type="text" placeholder=" Enter Zip code">
-    <input type="text" class="text2" placeholder=" Enter Address"><br>
-    <input type="text" class="text2" placeholder=" Enter Detailed Address"><span></p>
-    </form>
-  </div></div>
-
-  <div class="whole">
-    <form>
-    <h1>Receiver Info</h1>
-    <p><label>Name</label><span><input type="text"></span></p>
-    <p><label>Pet Name</label><span><input type="text"></span></p>
-    <p><label>Cell Phone Num</label> <span>
-      <select>
-    <option>010</option>
-    <option>011</option>
-    <option>019</option>
-    </select>
-    <input type="text">-<input type="text"></span></p>
-    <p><label>E-mail</label><span><input type="text">@
-    <select>
-    <option>gmail.com</option>
-    <option>naver.com</option>
-    <option>daum.net</option>
-    <option>hanmail.net</option>
-    </select></span></p>
-    <p style="border-bottom: 2px solid #828282;"><label>Address</label><span><input type="text" placeholder=" Enter Zip code">
-    <input type="text" class="text2" placeholder=" Enter Address"><br>
-    <input type="text" class="text2" placeholder=" Enter Detailed Address"><span></p>
-    </form>
 
 
-    </div>
-</div>
 <div id="grid3">
   <div>
-    <h1 class="paidname">* Amount to be paid</h1>
+    <h1 class="paidname">My page</h1>
+    <p class="paidnamedetail">
+We will inform you of the status of your order.
   <table id="customers">
   <tr>
-    <th>Total Order Amount</th>
-    <th>Total discount + additional payment amount</th>
+    <th>Image</th>
+    <th>Product Info</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Delivery</th>
+    <th>Shipping Fee</th>
     <th>Total amount due</th>
   </tr>
+  <tr th:each="order:${orderlist}" >
+    <td style="width:150px;"><img th:src="@{${order.img_dir}}" style="width:50%;"></td>
+    <td th:text="${order.}">CALCIUM　BEEF & PEAS</td>
+    <td>12.99 $</td>
+    <td>1</td>
+    <td>General delivery</td>
+    <td>2 $</td>
+    <td>= 14.99$</td>
+  </tr>
   <tr>
+    <td style="width:150px;"><img src="/pic/chicken_bowl.png" style="width:50%;"></td>
+    <td>HERBED　CHICKEN & RICE</td>
     <td>9.99 $</td>
-    <td>-0 $</td>
-    <td>= 9.99 $</td>
+    <td>1</td>
+    <td>General delivery</td>
+    <td>2 $</td>
+    <td>= 11.99$</td>
   </tr>
 </table>
 </div>
 
-<div class="accountnum">
-  <h1>* Payment</h1>
-  <p><label style="border-right:none;">Name of depositor</label><span><input type="text"></span></p>
-  <p><label style="border-right:none;">Deposit bank</label> <span>
-    <select>
-  <option> Bank of America : 44990201241827 JiwonPark </option>
-  <option> Kakao Bank : 01021127769 JiwonPark </option>
-  </select>
+
+
 </div>
 
-<div class="choicedog">
-    <img src="pic/choice.png">
-</div>
-</div>
-</div>
-<div class="bt1">
-  <button>Order Completed</button>
-</div>
+
+
+
     <div id="footer">
-        <img src="pic/LLOGO.png"style="width:70px; height:70px;">
-    <p>Seocho-daero, Seocho-gu, Seoul, Republic of Korea<p></p> Copyright © 2019 Pet Meals Corporation. All Right Reserved</p>
+        <img src="/pic/LLOGO.png"style="width:70px; height:70px;">
+    <p>Seocho-daero, Seocho-gu, Seoul, Republic of Korea</p><p> Copyright © 2019 Pet Meals Corporation. All Right Reserved</p>
     <div style="margin-top:40px;">
     <a href="#" class="fa fa-google"></a>
     <a href="#" class="fa fa-dribbble"></a>
