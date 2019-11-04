@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.petmeal.domain.Order;
@@ -45,9 +46,15 @@ public class ProductController {
 		String phone3=request.getParameter("phone3");
 		order.setR_phonenumber(phone1+"-"+phone2+"-"+phone3);
 		User currentUser=userService.findUserByEmail(principal.getName());
-		order.setBuyerId((long) currentUser.getId());
+		System.out.println(currentUser.getId());
+		order.setBuyerId(currentUser.getId());
 		order.setProducts_id(Long.parseLong(request.getParameter("products_id")));
 		order.setQuantity(Long.parseLong(request.getParameter("quantity")));
+		productsService.findByProductsId(Long.parseLong(request.getParameter("products_id"))).ifPresent(o -> {
+			order.setImgdir(o.getImg_dir());
+			order.setPname(o.getTitle1()+" "+o.getTitle2());
+			order.setPrice(o.getPrice());
+			});
 		orderService.save(order);
 		Long o_id=order.getId();
 		return new ModelAndView( "redirect:/orderinfo/"+o_id); //화면 출력
@@ -94,6 +101,22 @@ public class ProductController {
 		
 		 //데이터 저장
 	}
+	
+	@RequestMapping(value="/myaccount", method = RequestMethod.GET)
+    public ModelAndView myaccount(ModelAndView mav, Principal principal){
+		mav.setViewName("myaccount");
+        User user=userService.findUserByEmail(principal.getName());
+        Long buyerId=user.getId();
+        Optional<List<Order>> orderList=orderService.findOrderByBuyerId(buyerId);
+        if(orderList.isPresent()) {
+        	mav.addObject("orderlist",orderList.get());
+        }
+        else {
+        	mav.addObject("orderlist",false);
+        }
+        
+        return mav;
+    }
 	
 	
 	

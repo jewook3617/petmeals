@@ -3,6 +3,7 @@ package com.example.petmeal.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -22,7 +23,6 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
-    private OrderService orderService;
 
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(){
@@ -60,15 +60,7 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/myaccount", method = RequestMethod.GET)
-    public ModelAndView myaccount(ModelAndView mav, Principal principal){
-        mav.setViewName("myaccount");
-        User user=userService.findUserByEmail(principal.getName());
-        Long buyerId=user.getId();
-        List<Order> orderList=orderService.findOrderByBuyerId(buyerId);
-        mav.addObject("orderlist",orderList);
-        return mav;
-    }
+    
 
 
 }

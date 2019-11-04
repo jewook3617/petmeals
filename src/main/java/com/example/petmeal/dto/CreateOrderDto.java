@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateOrderDto {
 
-	private Long buyer_id;
+	private Long buyerId;
     private Long products_id;
     private String r_name;
     private String r_petname;
@@ -25,7 +25,7 @@ public class CreateOrderDto {
 
     public Order toEntity(){
         return Order.builder()
-                .buyer_id(buyer_id)
+                .buyerId(buyerId)
                 .products_id(products_id)
                 .r_name(r_name)
                 .r_petname(r_petname)

@@ -289,7 +289,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <img src="/pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;">
     <a href="/" id="logo">Pet Meals</a>
     <div id="navbar-right">
-      <a th:href="@{/login}" sec:authorize="isAnonymous()" style="width:auto;">Login</a>
+      <a href="/faq">FAQ</a>
+    <a th:href="@{/login}" sec:authorize="isAnonymous()" style="width:auto;">Login</a>
     <a th:href="@{/logout}" sec:authorize="isAuthenticated()" style="width:auto;" th:text="Logout"></a>
     <a th:href="@{/myaccount}" sec:authorize="isAuthenticated()">My Account</a>
     </div>
@@ -313,24 +314,18 @@ We will inform you of the status of your order.
     <th>Shipping Fee</th>
     <th>Total amount due</th>
   </tr>
-  <tr th:each="order:${orderlist}" >
-    <td style="width:150px;"><img th:src="@{${order.img_dir}}" style="width:50%;"></td>
-    <td th:text="${order.}">CALCIUM　BEEF & PEAS</td>
-    <td>12.99 $</td>
-    <td>1</td>
+  <tr th:if="${orderlist}" th:each="order:${orderlist}" >
+    <td style="width:150px;"><img th:src="@{${order.imgdir}}" style="width:50%;"></td>
+    <td ><a th:href="@{/orderinfo/}+${order.id}" th:text="${order.pname}"></a></td>
+    <td th:text="${order.price}+' $'"> </td>
+    <td th:text="${order.quantity}"></td>
     <td>General delivery</td>
     <td>2 $</td>
-    <td>= 14.99$</td>
+    <th:block th:with="price = ${order.price}, quantity=${order.quantity}, shipping = 2, sum = ${price*quantity+shipping}">
+    <td th:text="'= '+${sum}+' $'"></td>
+</th:block>
   </tr>
-  <tr>
-    <td style="width:150px;"><img src="/pic/chicken_bowl.png" style="width:50%;"></td>
-    <td>HERBED　CHICKEN & RICE</td>
-    <td>9.99 $</td>
-    <td>1</td>
-    <td>General delivery</td>
-    <td>2 $</td>
-    <td>= 11.99$</td>
-  </tr>
+  
 </table>
 </div>
 

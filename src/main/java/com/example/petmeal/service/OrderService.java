@@ -28,7 +28,7 @@ public class OrderService {
     }
     
     @Transactional
-    public List<Order> findOrderByBuyerId(Long buyer_id){
-    	return orderRepository.findBybuyerId(buyer_id);  
+    public Optional<List<Order>> findOrderByBuyerId(Long buyerId){
+    	return orderRepository.findAllByBuyerId(buyerId);  
     }
 }

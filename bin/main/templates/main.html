@@ -680,7 +680,7 @@ body {
   <body style="background-color:#fff;">
     <div id="navbar">
   <img th:src="@{pic/LLOGO.png}" style="width:50px; height:50px; float:left; margin-left:20px;">
-  <a href="#default" id="logo">Pet Meals</a>
+  <a href="/" id="logo">Pet Meals</a>
   <div id="navbar-right">
     
     <a href="/faq">FAQ</a>
@@ -688,7 +688,6 @@ body {
     <a th:href="@{/logout}" sec:authorize="isAuthenticated()" style="width:auto;" th:text="Logout"></a>
     <a th:href="@{/myaccount}" sec:authorize="isAuthenticated()">My Account</a>
   </div>
-  <span sec:authentication="name"></span>
 
   </div>
 

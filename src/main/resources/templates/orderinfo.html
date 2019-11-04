@@ -303,7 +303,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <img src="/pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;"/>
     <a href="/" id="logo">Pet Meals</a>
     <div id="navbar-right">
-      <a th:href="@{/login}" sec:authorize="isAnonymous()" style="width:auto;">Login</a>
+      <a href="/faq">FAQ</a>
+    <a th:href="@{/login}" sec:authorize="isAnonymous()" style="width:auto;">Login</a>
     <a th:href="@{/logout}" sec:authorize="isAuthenticated()" style="width:auto;" th:text="Logout"></a>
     <a th:href="@{/myaccount}" sec:authorize="isAuthenticated()">My Account</a>
     </div>

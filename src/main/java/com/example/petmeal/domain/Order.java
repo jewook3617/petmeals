@@ -23,7 +23,7 @@ public class Order {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Long id;
-    @Column(name="buyer_id")
+    @Column(name="buyerId")
     private Long buyerId;
     @Column
     private Long products_id;
@@ -41,11 +41,17 @@ public class Order {
     private String deposit_bank;
     @Column
     private Long quantity;
+    @Column
+    private String imgdir;
+    @Column
+    private float price;
+    @Column
+    private String pname;
 
 
     @Builder
-    public Order(Long buyer_id, Long products_id, String r_name, String r_petname, String r_phonenumber, String r_address, String deposit_name, String deposit_bank, Long quantity) {
-        this.buyerId = buyer_id;
+    public Order(Long buyerId, Long products_id, String r_name, String r_petname, String r_phonenumber, String r_address, String deposit_name, String deposit_bank, Long quantity, String imgdir, Long price, String pname) {
+        this.buyerId = buyerId;
         this.products_id = products_id;
         this.r_name = r_name;
         this.r_petname=r_petname;
@@ -54,7 +60,9 @@ public class Order {
         this.deposit_name=deposit_name;
         this.deposit_bank=deposit_bank;
         this.quantity=quantity;
-        
+        this.imgdir=imgdir;
+        this.price=price;
+        this.pname=pname;
         		
     }
 }
