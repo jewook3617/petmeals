@@ -1,426 +1,123 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
     <meta charset="utf-8">
     <title></title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!--
-            <script type="text/javascript">
+    <link rel="stylesheet" href="./css/ordernow2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!--
+    <script type="text/javascript">
 
-                function modifyProductQuantity(id, quantity){
+    function modifyProductQuantity(id, quantity){
 
-                     if(isNaN($("#"+id).val())){
-                          alert( '숫자만 입력가능 합니다.' );
-                          $("#"+id).focus();
-                          $("#"+id).val(0);
-                          return;
-                     }
+    if(isNaN($("#"+id).val())){
+    alert( '숫자만 입력가능 합니다.' );
+    $("#"+id).focus();
+    $("#"+id).val(0);
+    return;
+}
 
-                     var q = parseInt($("#"+id).val())+parseInt(quantity);
-                     $("#"+id).val(q);
-                };
-             </script>
+var q = parseInt($("#"+id).val())+parseInt(quantity);
+$("#"+id).val(q);
+};
+</script>
 -->
-    <style>
-    * {box-sizing: border-box;}
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-  body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-  }
-  /*
-  input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }*/
-  button {
-    float:left;
-    background-color: white;
-    color: black;
-    padding: 14px;
-    border: none;
-    text-decoration:none;
-    font-size:18px;
-    cursor: pointer;
-    width:100%;
-    margin-bottom: 100px;
-  }
+</head>
 
-  #navbar {
-    overflow: hidden;
-    background-color: white;
-    padding: 25px 10px;
-    transition: 0.4s;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 99;
-  }
-
-  #navbar a {
-    float: left;
-    color: black;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
-  }
-
-  #navbar #logo {
-    font-size: 35px;
-    font-weight: bold;
-    transition: 0.4s;
-  }
-
-  #navbar a:hover {
-    background-color: white;
-    color: black;
-  }
-
-  #navbar a.active {
-    background-color: white;
-    color: black;
-  }
-
-  #navbar-right {
-    float: right;
-  }
-
-  @media screen and (max-width: 580px) {
-    #navbar {
-      padding: 20px 10px !important;
-    }
-    #navbar a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-    #navbar-right {
-      float: none;
-    }
-  }
-
-  .container {
-    padding: 30px;
-  }
-  .container label{
-    font-size:20px;
-    color:#000000;
-  }
-  .background{
-    display:block;
-    text-align: center;
-    margin:auto;
-    margin-top:200px;
-  }
-  .detail{
-    font-size:30px;
-    word-spacing:5px;
-    color: #000000;
-    margin-top:60px;
-  }
-  #footer{
-    color:#000000;
-    font-size: 13px;
-    text-align: center;
-    margin-top:100px;
-    padding-top:70px;
-    margin-bottom:100px;
-  }
-  .fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 70px;
-  text-align: center;
-  text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-  }
-
-  .fa:hover {
-      opacity: 0.7;
-  }
-  .fa-google {
-    background: #dd4b39;
-    color: white;
-  }
-  .fa-dribbble {
-    background: #ea4c89;
-    color: white;
-  }
-  .fa-rss {
-    background: #ff6600;
-    color: white;
-  }
-  .cont{
-    margin-top:200px;
-    text-align:center;
-  }
-  .cont img{
-    display: block;
-    margin: 0px auto;
-    margin-top:80px;
-  }
-  .title {
-     margin-top:50px;
-     text-align:center;
-     color:black;
-     font-size: 40px;
-     font-weight:bold;
-  }
-  .titles{
-    color:#6DD66D;
-    font-size:60px;
-    font-weight:bold;
-    text-shadow: 0 0 2px #f00;
-  }
-
-  .introduce{
-    margin-top:50px;
-  }
-  .introducedetail{
-    font-size: 15px;
-  }
-  .subtitle{
-    font-size:18px;
-    font-weight: bold;
-    color:orange;
-    margin-bottom: 30px;
-  }
-  #grid ul{
-    width: 200px;
-    text-align:left;
-    font-weight: bold;
-  }
-  .contt{
-    margin-top:120px;
-    text-align: left;
-  }
-  table.type06 {
-    border-collapse: collapse;
-    text-align: left;
-    line-height: 0.5;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    margin: 20px 10px;
-  }
-  table.type06 th {
-      width: 150px;
-      padding: 10px;
-      font-weight: bold;
-      vertical-align: top;
-  }
-  table.type06 td {
-      width: 200px;
-      padding: 10px;
-      vertical-align: top;
-  }
-  table.type06 .even {
-      background: #efefef;
-  }
-  #grid{
-    display: grid;
-    grid-auto-rows: 1fr 150px 220px 120px 100px;
-    grid-auto-flow: rows;
-  }
-  #grid2{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  #grid3{
-    display: grid;
-    grid-template-columns: 200px 300px;
-  }
-  #grid4{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    text-align: center;
-  }
-  #grid5{
-    display: grid;
-    grid-template-rows: 250px 1fr 30px 100px;
-  }
-  #grid3 img{
-    width:80%;
-    height: 80%;
-  }
-  .bt1{
-    text-align:center;
-    margin-right: 400px;
-    height:100%;
-    width:300px;
-    margin: 0 auto;
-    margin-bottom: 150px;
-    margin-left:10px;
-  }
-  .bt1:before{
-    content:'';
-    height:100%;
-    display:inline-block;
-    vertical-align:middle;
-  }
-
-  .bt1 button{
-  background:orange;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-  }
-  .bt1 button:hover{
-    background:#fff;
-    color:orange;
-  }
-  .bt1 button:before,.bt1 button:after{
-    content:'';
-    position:absolute;
-    top:0;
-    right:0;
-    height:2px;
-    width:0;
-    background: orange;
-    transition:400ms ease all;
-  }
-  .bt1 button:after{
-    right:inherit;
-    top:inherit;
-    left:0;
-    bottom:0;
-  }
-  .bt1 button:hover:before,.bt1 button:hover:after{
-    width:100%;
-    transition:800ms ease all;
-  }
-  .cost{
-    text-align: left;
-    margin:0 10px;
-  }
-  .related{
-    margin-top: 100px;
-    margin-left:200px;
-    font-weight: bold;
-    font-size: 23px;
-    color:#828282;
-  }
-  #grid4 img{
-    width:40%;
-    height: 40%;
-  }
-  #grid4 img:hover{
-    opacity: 0.3;
-  }
-  #grid4 p{
-    font-size: 20px;
-    color:#828282;
-  }
-</style>
-  </head>
-
-    <body onload="init();" style="background-color:#fff;">
-      <div id="navbar">
-    <img src="pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;">
-    <a href="#default" id="logo">Pet Meals</a>
-    <div id="navbar-right">
-      <a class="active" href="#home">Meals</a>
-      <a href="#contact">help</a>
-      <a href="#about">My Account</a>
-    </div>
+<body onload="init();" style="background-color:#fff;">
+    <div id="navbar">
+        <img src="pic/LLOGO.png" style="width:50px; height:50px; float:left; margin-left:20px;">
+        <a href="#default" id="logo">Pet Meals</a>
+        <div id="navbar-right">
+            <a class="active" href="#home">Meals</a>
+            <a href="#contact">help</a>
+            <a href="#about">My Account</a>
+        </div>
     </div>
 
-<div id="grid2">
-<div id="grid" class="cont" style="margin-left:100px;">
-  <div>
-    <i><span style="color:#6DD66D;font-size:60px;font-weight:bold;text-shadow: 0 0 2px #f00;">HERBED</span></i>
-    <span class="title">　CHICKEN & RICE</span>
-    <p class="subtitle">- Home cooked and handmade , organic ingredients! -</p>
-  <img src="pic/chicken_bowl.png">
-  </div>
-</div>
+    <div id="grid2">
+        <div id="grid" class="cont" style="margin-left:100px;">
+            <div>
+                <i><span style="color:#6DD66D;font-size:60px;font-weight:bold;text-shadow: 0 0 2px #f00;">HERBED</span></i>
+                <span class="title">　CHICKEN & RICE</span>
+                <p class="subtitle">- Home cooked and handmade , organic ingredients! -</p>
+                <img src="pic/chicken_bowl.png">
+            </div>
+        </div>
 
 
-<div id="grid" class="contt" style="margin-left:50px; margin-right:300px;">
-  <div>
-    <div class="introduce">
-      <p style="font-size:20px;"><strong>
-      Chicken / Rice / Broccoli / Egg / Carrot / Chia Seed
-    </strong>
-    </p>
-    <div class="introducedetail"<p>
-  Highly recommended for healthy adult dogs, this is a delicious recipe with high protein content with cancer fighting properties.
-  </p><p>
-  Designed by veterinary nutritionist as per AAFCO guidelines- for balanced and complete nutrition for adult maintenance.
-  </p><p>
-  Helps reduce inflammation and joint pain due to high anti-oxidants and anti-inflammatory compounds.
-</p><p>
-   Helps maintain a healthy gut health, cardiovascular health and immune system.
- </p></div>
-</div>
-</div>
-<div id="grid3">
-<div>
-  <ul>
-    <li>Gluten Free</li>
-    <li>No Preservatives</li>
-    <li>No Additives</li>
-    <li>No By-Products</li>
-    <li>No Fillers</li>
-  </ul>
-</div>
-<div>
-  <img src="pic/organic.png">
-</div>
-</div>
-<div>
-  <table class="type06">
-    <tr>
-        <th scope="row">Protein</th>
-        <td>7.1%</td>
-    </tr>
-    <tr>
-        <th scope="row" class="even">Fat</th>
-        <td class="even">3.2%</td>
-    </tr>
-    <tr>
-        <th scope="row">Fiber</th>
-        <td>0.8%</td>
-    </tr>
-    <tr>
-        <th scope="row" class="even">Moisture</th>
-        <td class="even">79.9%</td>
-    </tr>
-    <tr>
-        <th scope="row">Calorie Content</th>
-        <td>38 kcal/oz</td>
-    </tr>
-</table>
-</div>
+        <div id="grid" class="contt" style="margin-left:50px; margin-right:300px;">
+            <div>
+                <div class="introduce">
+                    <p style="font-size:20px;"><strong>
+                        Chicken / Rice / Broccoli / Egg / Carrot / Chia Seed
+                    </strong>
+                </p>
+                <div class="introducedetail"<p>
+                    Highly recommended for healthy adult dogs, this is a delicious recipe with high protein content with cancer fighting properties.
+                </p><p>
+                    Designed by veterinary nutritionist as per AAFCO guidelines- for balanced and complete nutrition for adult maintenance.
+                </p><p>
+                    Helps reduce inflammation and joint pain due to high anti-oxidants and anti-inflammatory compounds.
+                </p><p>
+                    Helps maintain a healthy gut health, cardiovascular health and immune system.
+                </p></div>
+            </div>
+        </div>
+        <div id="grid3">
+            <div>
+                <ul>
+                    <li>Gluten Free</li>
+                    <li>No Preservatives</li>
+                    <li>No Additives</li>
+                    <li>No By-Products</li>
+                    <li>No Fillers</li>
+                </ul>
+            </div>
+            <div>
+                <img src="pic/organic.png">
+            </div>
+        </div>
+        <div>
+            <table class="type06">
+                <tr>
+                    <th scope="row">Protein</th>
+                    <td>7.1%</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="even">Fat</th>
+                    <td class="even">3.2%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fiber</th>
+                    <td>0.8%</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="even">Moisture</th>
+                    <td class="even">79.9%</td>
+                </tr>
+                <tr>
+                    <th scope="row">Calorie Content</th>
+                    <td>38 kcal/oz</td>
+                </tr>
+            </table>
+        </div>
 
-<div class="cost">
-<form name="form" method="get">
-Qty :　<input type=hidden name="sell_price" value="9.99">
-<input type="text" name="amount" value="1" size="3" onchange="change();">
-<input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+        <div class="cost">
+            <form name="form" method="get">
+                Qty :　<input type=hidden name="sell_price" value="9.99">
+                <input type="text" name="amount" value="1" size="3" onchange="change();">
+                <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
 
-Price : <input type="text" name="sum" size="13" readonly>$
-</form>
-</div>
-<div class="bt1">
-  <button onclick="window.open('URL', '_blank', 'width=730, height=750, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );">BUY NOW</button>
-</div>
-</div>
+                Price : <input type="text" name="sum" size="13" readonly>$
+            </form>
+        </div>
+        <div class="bt1">
+            <button onclick="window.open('URL', '_blank', 'width=730, height=750, toolbar=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no' );">BUY NOW</button>
+        </div>
+    </div>
 </div>
 
 
@@ -430,89 +127,89 @@ var sell_price;
 var amount;
 
 function init () {
-	sell_price = document.form.sell_price.value;
-	amount = document.form.amount.value;
-	document.form.sum.value = sell_price;
-	change();
+    sell_price = document.form.sell_price.value;
+    amount = document.form.amount.value;
+    document.form.sum.value = sell_price;
+    change();
 }
 
 function add () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-	hm.value ++ ;
+    hm = document.form.amount;
+    sum = document.form.sum;
+    hm.value ++ ;
 
-	sum.value = parseInt(hm.value) * sell_price;
+    sum.value = parseInt(hm.value) * sell_price;
 }
 
 function del () {
-	hm = document.form.amount;
-	sum = document.form.sum;
-		if (hm.value > 1) {
-			hm.value -- ;
-			sum.value = parseInt(hm.value) * sell_price;
-		}
+    hm = document.form.amount;
+    sum = document.form.sum;
+    if (hm.value > 1) {
+        hm.value -- ;
+        sum.value = parseInt(hm.value) * sell_price;
+    }
 }
 
 function change () {
-	hm = document.form.amount;
-	sum = document.form.sum;
+    hm = document.form.amount;
+    sum = document.form.sum;
 
-		if (hm.value < 0) {
-			hm.value = 0;
-		}
-	sum.value = parseInt(hm.value) * sell_price;
+    if (hm.value < 0) {
+        hm.value = 0;
+    }
+    sum.value = parseInt(hm.value) * sell_price;
 }
 
 </script>
 <div id="grid5">
-  <div class="related">
-<p>-Related Products</p>
-</div>
-<div id="grid4">
-  <div>
-<a href="http://www.google.co.kr/"><img src="pic/lamb_bowl.png" onclick="#"></a>
-</div>
-<div>
-  <a href="http://www.google.co.kr/"><img src="pic/beef_bowl.png"></a>
-</div>
-<div>
-  <a href="http://www.google.co.kr/"><img src="pic/turkey_bowl.png"></a>
-</div>
-</div>
-<div id="grid4" class="relatedname">
-  <div>
-    <p>Chunky Lamb & Brown Rice</p>
-</div>
-<div>
-  <p>Beef & Peas</p>
-</div>
-<div>
-  <p>Turkey & Carrots</p>
-</div>
-</div>
-<div id="grid4" class="relatedname">
-  <div>
-    <p>9.99$</p>
-</div>
-<div>
-  <p>12.99$</p>
-</div>
-<div>
-  <p>9.99$</p>
-</div>
-</div>
+    <div class="related">
+        <p>-Related Products</p>
+    </div>
+    <div id="grid4">
+        <div>
+            <a href="http://www.google.co.kr/"><img src="pic/lamb_bowl.png" onclick="#"></a>
+        </div>
+        <div>
+            <a href="http://www.google.co.kr/"><img src="pic/beef_bowl.png"></a>
+        </div>
+        <div>
+            <a href="http://www.google.co.kr/"><img src="pic/turkey_bowl.png"></a>
+        </div>
+    </div>
+    <div id="grid4" class="relatedname">
+        <div>
+            <p>Chunky Lamb & Brown Rice</p>
+        </div>
+        <div>
+            <p>Beef & Peas</p>
+        </div>
+        <div>
+            <p>Turkey & Carrots</p>
+        </div>
+    </div>
+    <div id="grid4" class="relatedname">
+        <div>
+            <p>9.99$</p>
+        </div>
+        <div>
+            <p>12.99$</p>
+        </div>
+        <div>
+            <p>9.99$</p>
+        </div>
+    </div>
 </div>
 <!--
 <div>
 수량 :
-   <input name="quantity" id="quantity" style="vertical-align:middle; text-align:right" size="5" maxlength="4" value="0" />
-   <img style="vertical-align:middle;" alt="수량 증가 감소" src="pic/btn_cnt.gif" usemap="#map_name_quantity"/>
-   <map id="map_name_quantity" name="map_name_quantity">
-       <area href="javascript:modifyProductQuantity('quantity',1);" shape="rect" alt="수량 증가" coords="0,0,9,10"/>
-       <area href="javascript:modifyProductQuantity('quantity',-1);" shape="rect" alt="수량 감소" coords="0,10,9,20"/>
-   </map>
- </div>
- <div>
+<input name="quantity" id="quantity" style="vertical-align:middle; text-align:right" size="5" maxlength="4" value="0" />
+<img style="vertical-align:middle;" alt="수량 증가 감소" src="pic/btn_cnt.gif" usemap="#map_name_quantity"/>
+<map id="map_name_quantity" name="map_name_quantity">
+<area href="javascript:modifyProductQuantity('quantity',1);" shape="rect" alt="수량 증가" coords="0,0,9,10"/>
+<area href="javascript:modifyProductQuantity('quantity',-1);" shape="rect" alt="수량 감소" coords="0,10,9,20"/>
+</map>
+</div>
+<div>
 가격 :
 <input name="sum"  style="vertical-align:middle; text-align:right" readonly size="5" maxlength="10"/>
 </div>
@@ -522,17 +219,17 @@ function change () {
 -->
 
 
-    <div id="footer">
-        <img src="pic/LLOGO.png"style="width:70px; height:70px;">
+<div id="footer">
+    <img src="pic/LLOGO.png"style="width:70px; height:70px;">
     <p>
-    Seocho-daero, Seocho-gu, Seoul, Republic of Korea</p><p> Copyright © 2019 Pet Meals Corporation. All Right Reserved
-    </p>
-    <div style="margin-top:40px;">
-    <a href="#" class="fa fa-google"></a>
-    <a href="#" class="fa fa-dribbble"></a>
-    <a href="#" class="fa fa-rss"></a>
-    </div>
-    <div>
-    </body>
+        Seocho-daero, Seocho-gu, Seoul, Republic of Korea</p><p> Copyright © 2019 Pet Meals Corporation. All Right Reserved
+        </p>
+        <div style="margin-top:40px;">
+            <a href="#" class="fa fa-google"></a>
+            <a href="#" class="fa fa-dribbble"></a>
+            <a href="#" class="fa fa-rss"></a>
+        </div>
+        <div>
+        </body>
 
-    </html>
+        </html>
